@@ -19,12 +19,15 @@ function cwp_create_sitemap() {
     foreach (WordpressData::get_pages() as $page) {
         $sitemap->add_entry($page);
     }
+
     foreach (WordpressData::get_authors() as $author) {
         $sitemap->add_entry($author);
     }
+
     foreach (WordpressData::get_categories() as $category) {
         $sitemap->add_entry($category);
     }
+
     foreach(WordpressData::get_posts() as $post) {
         setup_postdata($post);
         $postdate = explode(" ", $post->post_modified);
@@ -33,6 +36,11 @@ function cwp_create_sitemap() {
 
     $sitemap->end();
     $sitemap->write();
+}
+
+function cwp_update_admin_bar() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('wp-logo');
 }
 
 ?>

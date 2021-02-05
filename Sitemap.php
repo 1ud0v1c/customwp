@@ -7,7 +7,7 @@
 		private $result;
 
 		function __construct() {
-		   	$this->result = "<?xml version='1.0' encoding='UTF-8'?>\n";
+			$this->result = "<?xml version='1.0' encoding='UTF-8'?>\n";
 		    $this->result .= "<urlset\n ";
 		    $this->result .= "xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'\n ";
 		    $this->result .= "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\n ";
