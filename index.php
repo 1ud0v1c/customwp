@@ -43,4 +43,26 @@ function cwp_update_admin_bar() {
     $wp_admin_bar->remove_menu('wp-logo');
 }
 
+function cwp_posts_columns($defaults){
+    $begin_of_columns = array_slice($defaults, 0, 2, true);
+    $end_of_columns = array_slice($defaults, 2, count($defaults) - 1, true);
+    $image_column = array('thumbs' => __('Image'));
+    return $begin_of_columns + $image_column + $end_of_columns;
+}
+
+function cwp_posts_custom_columns($column_name, $id){
+    switch ($column_name) {
+        case 'thumbs':
+            if(has_post_thumbnail()) {
+                $size = array(100,100);
+                $options = array();
+                echo the_post_thumbnail($size, $options);
+            }
+            break;
+
+        default:
+            break;
+    }
+}
+
 ?>
